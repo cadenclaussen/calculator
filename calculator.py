@@ -1,17 +1,21 @@
 from tkinter import *
 
 root = Tk()
-root.title("Simple Calcultor")
+root.title("Calcultor")
 
 e = Entry(root, width=35, borderwidth=5)
 e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
-#e.insert(0, "")
+
+
+
+
 
 def button_click(number):
 	current = e.get()
-	e.delete(0, END)
-	e.insert(0, str(current) + str(number))
+	if "." not in current or number != ".":
+		e.delete(0, END)
+		e.insert(0, str(current) + str(number))
 
 
 def button_clear():
@@ -57,6 +61,8 @@ def button_square():
 	f_num = float(first_number)
 	e.delete(0, END)
 
+
+
 def button_equal():
 	second_number = e.get()
 	e.delete(0, END)
@@ -70,6 +76,11 @@ def button_equal():
 		e.insert(0, f_num - float(second_number))
 	if operation == "square":
 		e.insert(0, f_num ** float(second_number))
+
+
+
+
+
 
 
 # Define Buttons
@@ -92,6 +103,11 @@ button_divide = Button(root, text="/ ", padx=39, pady=20, command=button_divide)
 button_subtract = Button(root, text="- ", padx=39, pady=20, command=button_subtract)
 button_square = Button(root, text="x^y", padx=39, pady=20, command=button_square)
 button_dot = Button(root, text=".", padx=39, pady=20, command=lambda: button_click("."))
+
+
+
+
+
 
 
 # Put the buttons on the screen
